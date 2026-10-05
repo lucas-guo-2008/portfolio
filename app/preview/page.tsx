@@ -1,5 +1,6 @@
 import PageHeader from "@/components/PageHeader";
 import Card from "@/components/Card";
+import StatusBadge from "@/components/StatusBadge";
 
 export default function PreviewPage() {
     return (
@@ -8,6 +9,11 @@ export default function PreviewPage() {
             <PageHeader title="Portfolio"></PageHeader>
             <Card header="Tung tung">Tung tung tung sahur</Card>
             <Card>Tung tung tung sahur</Card>
+            <div className="flex flex-wrap gap-4">
+                <StatusBadge status='live'></StatusBadge>
+                <StatusBadge status='building'></StatusBadge>
+                <StatusBadge status='planned'></StatusBadge>
+            </div>
         </div>
     );
 }
