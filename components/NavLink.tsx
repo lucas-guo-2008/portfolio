@@ -15,7 +15,7 @@ export default function NavLink({ href, children }:NavLinkProps) {
   return (
     <Link
       href={href}
-      className="group inline-grid focus-visible:ring-accent focus-visible:ring-2 outline-hidden"
+      className="group inline-grid focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       aria-current={isActive ? "page" : undefined}
       >
         <span aria-hidden="true" className="col-start-1 row-start-1 invisible font-bold">

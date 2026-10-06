@@ -11,7 +11,7 @@ export default function SocialLink({ href, children }:SocialLinkProps) {
       href={href}
       target={href.startsWith('mailto:') ? undefined : '_blank'} 
       rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-      className="text-accent text-body-sm font-mono border-b border-accent-border hover:text-accent-strong hover:border-accent-strong focus-visible:ring-accent focus-visible:ring-2 outline-hidden"
+      className="text-accent text-body-sm font-mono border-b border-accent-border hover:text-accent-strong hover:border-accent-strong focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
       {children}
     </a>
