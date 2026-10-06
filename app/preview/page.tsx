@@ -1,6 +1,7 @@
 import PageHeader from "@/components/PageHeader";
 import Card from "@/components/Card";
 import StatusBadge from "@/components/StatusBadge";
+import Button from "@/components/Button";
 
 export default function PreviewPage() {
     return (
@@ -13,6 +14,10 @@ export default function PreviewPage() {
                 <StatusBadge status='live'></StatusBadge>
                 <StatusBadge status='building'></StatusBadge>
                 <StatusBadge status='planned'></StatusBadge>
+            </div>
+            <div className="flex gap-4">
+                <Button>hi testing here</Button>
+                <Button aria-pressed={true}>More testing here</Button>
             </div>
         </div>
     );
