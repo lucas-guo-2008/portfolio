@@ -8,7 +8,7 @@ export default function PageHeader({title, summary, path}:PageHeaderProps) {
     return (
         <div className="border border-border rounded-lg overflow-hidden">
             {path && 
-            <div className="font-mono text-label uppercase py-4 px-6 border-b border-border bg-surface-muted">
+            <div className="font-mono text-label uppercase tracking-label py-4 px-6 border-b border-border bg-surface-muted">
                 {path}
             </div>}
             <div className="bg-surface px-6">
