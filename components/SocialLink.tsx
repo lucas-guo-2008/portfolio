@@ -7,8 +7,8 @@ interface SocialLinkProps {
 }
 
 const socialLinkStyles: Record<'accent' | 'muted', string> = {
-    'accent': 'text-accent border-accent-border hover:text-accent-strong hover:border-accent-strong',
-    'muted': 'text-text-muted border-transparent hover:border-text-muted',
+    'accent': 'text-body-sm text-accent border-accent-border hover:text-accent-strong hover:border-accent-strong',
+    'muted': 'text-caption text-text-secondary border-transparent hover:border-text-secondary',
 }
 
 export default function SocialLink({ href, children, variant='accent' }:SocialLinkProps) {
@@ -17,7 +17,7 @@ export default function SocialLink({ href, children, variant='accent' }:SocialLi
       href={href}
       target={href.startsWith('mailto:') ? undefined : '_blank'} 
       rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-      className={`text-body-sm font-mono border-b focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${socialLinkStyles[variant]}`}
+      className={`font-mono border-b focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${socialLinkStyles[variant]}`}
       >
       {children}
     </a>

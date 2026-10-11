@@ -3,10 +3,17 @@ import SocialLink from "./SocialLink";
 
 export default function Footer() {
     return (
-        <footer className="w-full mx-auto max-w-page px-5 md:px-12">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-x-4 gap-y-2 border-t border-border py-8">
-                <ul className="flex flex-wrap gap-4 md:gap-10">
-                    {socials.map(link => <li key={link.href}><SocialLink href={link.href} variant='muted'>{link.label}</SocialLink></li>)}
+        // mt adds to <main>'s bottom padding: 12 + 36 = 48px at 390, 32 + 40 = 72px at md
+        <footer className="mt-9 md:mt-10 bg-surface border-t border-border">
+            <div className="w-full mx-auto max-w-page px-5 md:px-12 py-5 md:py-7 flex flex-col md:flex-row justify-between md:items-center gap-3">
+                <ul className="grid grid-cols-2 gap-x-4 md:flex md:flex-wrap md:gap-6">
+                    {socials.map(link => (
+                        <li key={link.label} className="py-3 md:py-0 last:col-span-2">
+                            {link.href
+                                ? <SocialLink href={link.href} variant='muted'>{link.label}</SocialLink>
+                                : <span className="text-caption font-mono text-text-secondary border-b border-transparent">{link.label}</span>}
+                        </li>
+                    ))}
                 </ul>
                 <div className="text-label font-mono tracking-label uppercase text-text-muted">Lucas Guo · 2026</div>
             </div>

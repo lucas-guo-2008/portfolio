@@ -9,7 +9,10 @@ const sans    = Public_Sans({ subsets: ["latin"], variable: "--font-public-sans"
 const mono    = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-jetbrains-mono" });
 
 export const metadata = {
-  title: 'Lucas\' portfolio',
+  title: {
+    default: 'Lucas\' portfolio',
+    template: '%s | Lucas\' portfolio',
+  },
   description: 'All about me and my projects :D'
 }
 
