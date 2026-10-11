@@ -42,26 +42,26 @@ export const projects : Project[] = [
   },
   {
     title: 'Clash of Clans Attack Bot',
-    summary: 'A computer-vision bot that farms loot in Clash of Clans without any game API. It captures the screen over ADB, identifies menus and reads each base\'s loot with OpenCV template matching, and decides whether to attack. The secondary goal is to learn computer vision and system design by building in small, testable steps, with pure vision modules developed against saved frames instead of the live game.',
+    summary: 'A computer-vision bot that farms Clash of Clans loot with no game API: it captures the screen over ADB, reads menus and each base\'s loot with OpenCV template matching, and decides whether to attack. The secondary goal is to learn computer vision and system design by building in small, testable steps.',
     phases: [
       {
         comment: 'Plumbing',
-        description: 'Connect to BlueStacks Air over ADB, benchmark raw screencap capture (~176 ms/frame), and build the frame recorder and offline replay tools.'
+        description: 'Capture the BlueStacks Air screen over ADB (~176 ms/frame) and build frame-recording and offline replay tools.'
       }, {
         comment: 'Navigate',
-        description: 'Identify screens from button template matches and drive the full loop (home → army → attack menu → scout → Next → home) with a pure state machine that never taps a screen it has not identified.'
+        description: 'Identify screens by template-matching their buttons, and drive the full attack loop with a state machine that only taps screens it recognizes.'
       }, {
         comment: 'Read Loot',
-        description: 'Read gold, elixir, and dark elixir with per-digit template matching on a binarized crop. 96/96 labelled digits are read correctly, and any unreadable panel is skipped rather than guessed.'
+        description: 'Read gold, elixir, and dark elixir with per-digit template matching: 96/96 labelled digits correct, and unreadable panels are never guessed.'
       }, {
         comment: 'Deploy',
-        description: 'Skip bases until the loot clears a threshold, then drop troops along the deployable perimeter, wait out the battle, and return home. This is where it becomes a complete farming bot.'
+        description: 'Attack bases whose loot clears a threshold: drop troops along the deployable perimeter, wait out the battle, and return home.'
       }, {
         comment: 'Building Detection',
-        description: 'Train a YOLO nano model on frames collected in earlier phases to detect defenses, collectors, storages, and walls. Labelling starts with ~100 hand-labelled frames, then a weak model pre-labels the rest.'
+        description: 'Train a YOLO nano model to detect defenses, collectors, storages, and walls, bootstrapping labels from ~100 hand-labelled frames.'
       }, {
         comment: 'Decision Layer',
-        description: 'Combine building detections and loot into an expected-value score that picks which bases to attack and which side to deploy from, replacing the fixed thresholds.'
+        description: 'Score each base by expected value from detections and loot to choose which bases to attack and which side to deploy from.'
       }
     ],
     stack: [
