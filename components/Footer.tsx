@@ -3,8 +3,7 @@ import SocialLink from "./SocialLink";
 
 export default function Footer() {
     return (
-        // mt adds to <main>'s bottom padding: 12 + 36 = 48px at 390, 32 + 40 = 72px at md
-        <footer className="mt-9 md:mt-10 bg-surface border-t border-border">
+        <footer className="mt-12 md:mt-18 bg-surface border-t border-border">
             <div className="w-full mx-auto max-w-page px-5 md:px-12 py-5 md:py-7 flex flex-col md:flex-row justify-between md:items-center gap-3">
                 <ul className="grid grid-cols-2 gap-x-4 md:flex md:flex-wrap md:gap-6">
                     {socials.map(link => (
