@@ -5,17 +5,17 @@
   --shadow-*: initial;
 
   /* ── Surfaces ─────────────────────────────── */
-  --color-page: #EEF1F4;
+  --color-page: #F3F1EC;
   --color-surface: #FFFFFF;
-  --color-surface-muted: #F8FAFB;
-  --color-border: #D4DAE0;
-  --color-border-subtle: #E4E8EC;
+  --color-surface-muted: #FAF8F3;
+  --color-border: #DCD6C8;
+  --color-border-subtle: #E7E2D7;
 
   /* ── Text ─────────────────────────────────── */
   --color-text: #0E1216;
   --color-text-secondary: #323A42;
-  --color-text-muted: #5C6773;
-  --color-text-faint: #A9B3BC;      /* decorative only: "—", dashed borders */
+  --color-text-muted: #6B6455;
+  --color-text-faint: #B9B2A3;      /* decorative only: "—", dashed borders */
 
   /* ── Accent ───────────────────────────────── */
   --color-accent: #4E52D8;
@@ -23,6 +23,10 @@
   --color-accent-soft: #EDEEFC;
   --color-accent-border: #C6C8F4;
   --color-on-accent: #FFFFFF;
+
+  /* ── Race ─────────────────────────────────── */
+  --color-marker: #C2410C;          /* race orange: km signs, finish dot, bib band. Deliberately not Strava's #FC4C02 */
+  --color-on-marker: #FFFFFF;       /* text on marker: 5.2:1 */
 
   /* ── Status ───────────────────────────────── */
   --color-live: #00775E;
@@ -32,7 +36,7 @@
   --color-danger: #B42318;
   --color-danger-soft: #FDEDEB;
   --color-danger-border: #F3C3BD;
-  --color-skeleton: #E4E8EC;
+  --color-skeleton: #E7E2D7;
 
   /* ── Charts ── */
   --color-chart-1: #4E52D8;         /* Push · Deep */
@@ -40,11 +44,11 @@
   --color-chart-3: #9B5410;         /* Legs · Awake */
   --color-chart-4: #B0306A;         /* REM · Heart rate */
   --color-chart-5: #56626E;         /* Light */
-  --color-chart-grid: #E4E8EC;
-  --color-chart-axis: #D4DAE0;
+  --color-chart-grid: #E7E2D7;
+  --color-chart-axis: #DCD6C8;
 
   /* ── Charts ── */
-  --color-heat-0: #EEF1F4;          /* 0 commits */
+  --color-heat-0: #F3F1EC;          /* 0 commits */
   --color-heat-1: #8286E4;          /* 1–2 */
   --color-heat-2: #6367DE;          /* 3–5 */
   --color-heat-3: #4E52D8;          /* 6–7 */
@@ -57,6 +61,8 @@
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
   /* ── Type scale ───────────────────────────── */
+  --text-hero: 4rem;         --text-hero--line-height: 1.02;    --text-hero--letter-spacing: -0.035em;   /* home + project h1 at md+ */
+  --text-bib: 3.75rem;       --text-bib--line-height: 1;        --text-bib--letter-spacing: -0.03em;     /* bib number */
   --text-display: 2.5rem;    --text-display--line-height: 1.05; --text-display--letter-spacing: -0.03em;
   --text-title: 2rem;        --text-title--line-height: 1.1;    --text-title--letter-spacing: -0.03em;
   --text-heading: 1.25rem;   --text-heading--line-height: 1.3;  --text-heading--letter-spacing: -0.02em;
@@ -80,4 +86,12 @@
   --radius-lg: 0.5rem;              /* cards, tiles */
 
   --shadow-tooltip: 0 4px 12px rgb(14 18 22 / 0.08);
+  --shadow-bib: 0 10px 28px rgb(14 18 22 / 0.14);
+}
+
+/* Checkered finish-line strip: 12px tall, 6px squares. Footer only. */
+@utility finish-line {
+  height: 0.75rem;
+  background-image: repeating-conic-gradient(var(--color-text-secondary) 0 25%, transparent 0 50%);
+  background-size: 0.75rem 0.75rem;
 }

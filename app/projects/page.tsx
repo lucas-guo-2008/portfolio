@@ -7,8 +7,7 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    // Extra top space on top of <main>'s pt-5 md:pt-9: this page opens with a bare heading, not a tile
-    <div className="flex flex-col gap-5 md:gap-7 pt-2 md:pt-3">
+    <div className="flex flex-col gap-5 md:gap-7 pt-2 md:pt-3 finish-line">
       <div className="flex items-baseline gap-3 md:gap-4">
         <h1 className="text-title md:text-display font-display font-bold">Projects</h1>
         <p className="font-mono text-label uppercase tracking-label text-text-muted">
