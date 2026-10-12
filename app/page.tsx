@@ -1,57 +1,58 @@
 import Link from 'next/link';
+import CourseMap from '@/components/CourseMap';
 import ProjectTile from '@/components/ProjectTile';
+import Sign from '@/components/Sign';
 import { projects, type Project } from '@/lib/projects';
-import { bio, tagline } from '@/lib/about';
+import { bio, location, tagline } from '@/lib/about';
 
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2';
-const label = 'font-mono text-label uppercase tracking-label';
-const built: Project['status'][] = ['live', 'complete'];   // finished, deployed or not
+const textLink = `self-start pt-2.5 pb-0.5 md:pt-0 md:pb-0 md:mt-1 font-mono text-caption text-accent border-b border-accent-border hover:text-accent-strong hover:border-accent-strong ${focusRing}`;
+const built: Project['status'][] = ['live', 'complete'];
+
+const flagIcon = (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+    <path d="M0 0h3v3H0zM6 0h3v3H6zM3 3h3v3H3zM9 3h3v3H9zM0 6h3v3H0zM6 6h3v3H6zM3 9h3v3H3zM9 9h3v3H9z" />
+  </svg>
+);
+const arrowIcon = (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
 
 export default function Home() {
   const featured = projects.filter(project => project.featured);
   const groups = [
-    { label: 'Built', projects: featured.filter(project => built.includes(project.status)) },
-    { label: 'Now and next', projects: featured.filter(project => !built.includes(project.status)) },
+    { label: 'Built', icon: flagIcon, projects: featured.filter(project => built.includes(project.status)) },
+    { label: 'Now and next', icon: arrowIcon, projects: featured.filter(project => !built.includes(project.status)) },
   ].filter(group => group.projects.length > 0);
 
   return (
-    <div className="flex flex-col gap-10 md:gap-14 md:pt-1">
-      <section className="bg-surface border border-border rounded-lg px-5 py-6 md:px-12 md:pt-12 md:pb-11 flex flex-col gap-3.5 md:gap-4.5">
-        <p className={`${label} text-text-muted`}>Lucas Guo</p>
-        <h1 className="text-title md:text-display font-display font-bold">{tagline}</h1>
-        <p className="max-w-reading text-body text-text-secondary">{bio[0]}</p>
-        <Link
-          href="/about"
-          className={`self-start pt-2.5 pb-0.5 md:pt-0 md:pb-0 md:mt-1 font-mono text-caption text-accent border-b border-accent-border hover:text-accent-strong hover:border-accent-strong ${focusRing}`}
-        >
-          More about me →
-        </Link>
+    <div className="flex flex-col">
+      <section className="relative py-12 md:py-24">
+        {/* xl+ only, in the right half: the intro narrows to max-w-xl there so the two never overlap */}
+        <CourseMap className="hidden xl:block absolute right-0 top-0 h-full w-1/2 pointer-events-none" />
+        <div className="relative flex flex-col gap-4.5 max-w-reading xl:max-w-xl">
+          <p className="font-mono text-caption tracking-wide text-text-muted">{location}</p>
+          <h1 className="text-display md:text-hero font-display font-bold">{tagline}</h1>
+          <p className="text-body text-text-secondary">{bio[0]}</p>
+          <Link href="/about" className={textLink}>More about me →</Link>
+        </div>
       </section>
 
-      <section className="flex flex-col gap-3 md:gap-3.5">
-        <div className="flex items-baseline justify-between gap-3">
-          <div className="flex items-baseline gap-2.5 md:gap-3">
-            <h2 className="text-heading font-display font-bold">Projects</h2>
-            <p className={`${label} text-text-muted`}>
-              {featured.length}
-              <span className="hidden md:inline"> {featured.length === 1 ? 'project' : 'projects'}</span>
-            </p>
-          </div>
-          <Link href="/projects" className={`py-3 md:py-0 ${label} text-accent hover:text-accent-strong ${focusRing}`}>
-            All projects →
-          </Link>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          {groups.map(group => (
-            <div key={group.label} className="flex flex-col gap-2">
-              <h3 className={`${label} text-text-muted`}>{group.label}</h3>
-              <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-                {group.projects.map(project => <ProjectTile key={project.slug} project={project} />)}
-              </div>
+      <section className="relative flex flex-col gap-12 pb-6 pl-11 before:absolute before:left-2.5 before:top-2 before:bottom-0 before:border-l-2 before:border-dashed before:border-text-faint">
+        {groups.map(group => (
+          <div key={group.label} className="flex flex-col gap-4">
+            <div className="relative flex items-baseline gap-3">
+              <Sign icon aria-hidden className="absolute -left-11 top-0.5">{group.icon}</Sign>
+              <h2 className="text-heading md:text-title font-display font-bold">{group.label}</h2>
             </div>
-          ))}
-        </div>
+            <div className="grid gap-3.5 md:grid-cols-2 lg:grid-cols-3">
+              {group.projects.map(project => <ProjectTile key={project.slug} project={project} titleAs="h3" />)}
+            </div>
+          </div>
+        ))}
+        <Link href="/projects" className={textLink}>All projects →</Link>
       </section>
     </div>
   );
