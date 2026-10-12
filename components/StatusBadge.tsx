@@ -6,6 +6,7 @@ type StatusBadgeProps = {
 
 const statusBadges: Record<Project['status'], {label: string; dot: string}> = {
     'live': {label: 'bg-live-soft text-live border-live-border', dot: 'bg-live'},
+    'complete': {label: 'bg-surface-muted text-text-secondary border-border', dot: 'bg-text-secondary'},
     'building': {label: 'bg-accent-soft text-accent border-accent-border', dot: 'bg-accent'},
     'planned': {label: 'bg-surface-muted text-text-muted border-text-faint border-dashed', dot: 'border border-text-muted'},
 }

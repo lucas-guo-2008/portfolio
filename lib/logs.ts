@@ -31,6 +31,7 @@ export function parseEntry(entry: string): EntryBlock[] {
   });
 }
 
+// Oldest first: the home footer and anything else reading "the latest log" rely on this order.
 export const logs: Log[] = [
   {
     projectSlug: 'portfolio',
