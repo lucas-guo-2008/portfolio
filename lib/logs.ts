@@ -9,12 +9,34 @@ export function getLogs(slug : string) : Log[] {
   return logs.filter(f => f.projectSlug === slug);
 }
 
+export type ListItem = { lead: string; body: string[] };
+export type EntryBlock =
+  | { kind: 'paragraph'; text: string }
+  | { kind: 'list'; items: ListItem[] };
+
+const NUMBERED = /^\d+\. /;
+
+// Entry format: blocks separated by a blank line. 
+// A block starting with "1. " is a numbered list
+// Every other block is one paragraph.
+export function parseEntry(entry: string): EntryBlock[] {
+  return entry.split('\n\n').map((block): EntryBlock => {
+    if (!NUMBERED.test(block)) return { kind: 'paragraph', text: block };
+    const items: ListItem[] = [];
+    for (const line of block.split('\n')) {
+      if (NUMBERED.test(line)) items.push({ lead: line.replace(NUMBERED, ''), body: [] });
+      else items[items.length - 1].body.push(line);
+    }
+    return { kind: 'list', items };
+  });
+}
+
 export const logs: Log[] = [
   {
     projectSlug: 'portfolio',
     title: 'Log 1 - The Beginning',
     date: '2026-07-24',
-    entry: 'This is the start of me building my website in an effort to prepare for uni! I\'ve went through a 6h HTML and CSS tutorial so now I understand some of how  to convert my website designs into an actual page, even if I still need to rely heavily on searching things up to remind myself of the syntax and differences between all the different displays and positions and of course syntax needed. \n\nI think my main goal for now is to rapidly learn the basics of everything needed to code a website, then slowly build one myself.\n\nNext up: Javascript.'
+    entry: 'This is the start of me building my website in an effort to prepare for uni! I\'ve went through a 6h HTML and CSS tutorial so now I understand some of how to convert my website designs into an actual page, even if I still need to rely heavily on searching things up to remind myself of the syntax and differences between all the different displays and positions and of course syntax needed. \n\nI think my main goal for now is to rapidly learn the basics of everything needed to code a website, then slowly build one myself.\n\nNext up: Javascript.'
   }, 
   {
     projectSlug: 'portfolio',
@@ -32,12 +54,12 @@ export const logs: Log[] = [
     projectSlug: 'portfolio',
     title: 'Log 4 - An Impending Sense of Doom',
     date: '2026-08-03 (night)',
-    entry: 'Big refactor today with shifting the whole repo onto Next.js framework. Still not finished with everything, but a more clear roadmap is ahead. To be honest, there\'s a lot of changes that need to be made to my code still. This might also become more like a journal with more frequent entries and goals for the near-future.\n\nHere\'s some goals for tomorrow and maybe the day after:\n1. Convert projects page css to tailwind css\n2. Change projects page to have project summaries with project logs in subpages (and format both pages)\n3. Create containers for project summaries\n4. Create a navbar connecting pages that sits at the top of all pages on the website\n5. Start learning how to import data from excel or google sheets (for gym data) as well as displaying it and choosing what to display\n6. See if I can turn these journal entries into JSON or if there are any better methods of storing it (hopefully a r/w solution so I can create a journal entry submitter too)\n7. See if I can connect github to project logs page to display commits (and look at how I may present this data)'
+    entry: 'Big refactor today with shifting the whole repo onto Next.js framework. Still not finished with everything, but a more clear roadmap is ahead. To be honest, there\'s a lot of changes that need to be made to my code still. This might also become more like a journal with more frequent entries and goals for the near-future.\n\nHere\'s some goals for tomorrow and maybe the day after:\n\n1. Convert projects page css to tailwind css\n2. Change projects page to have project summaries with project logs in subpages (and format both pages)\n3. Create containers for project summaries\n4. Create a navbar connecting pages that sits at the top of all pages on the website\n5. Start learning how to import data from excel or google sheets (for gym data) as well as displaying it and choosing what to display\n6. See if I can turn these journal entries into JSON or if there are any better methods of storing it (hopefully a r/w solution so I can create a journal entry submitter too)\n7. See if I can connect github to project logs page to display commits (and look at how I may present this data)'
   },
   {
     projectSlug: 'portfolio',
     title: 'Log 5 - A Thorough Reflection on What to Do',
     date: '2026-08-08',
-    entry: 'I\'ve been thinking about where I am and where I should focus the rest of the month until classes start.\n\nSo far, I\’ve worked through courses on HTML, CSS, JavaScript, React, and Next.js, and built a portfolio site. This includes a personal bio, project summary page, and logs for my one project so far (this one!). Unfinished work includes having a backend for my journal entries as well as analyzing and displaying gym data (but fetching and processing data is complete).\nYesterday, I also created a custom macOS shortcut using Python to streamline my morning routine. \nHowever, while frontend has been a good place to start, I need to start building deeper skills that can’t be so easily replaced by AI. \n\n1. Finish and Deploy the Personal Website\nFeatures that I can finish are mostly done (remaining: dropdown menu from navbar on hover), so just deploy this to Vercel and get it done. Deployed and done is better than infinitely polishing this.\n\n2. Build a Dedicated Quote Backend\nUse FastAPI (Python) and SQLite, deployed on Railway or Render, connected to Next.js which manages and displays quotes. \nScope: Fetch all quotes, get a random daily quote, and submit a new quote.\nWhy: This provides a complete full-stack mental model, connecting a Next.js site to actual database operations. I\’ll use this to go to creating a backend for my journal entries.\n\n3. Dive into Garmin Data Analysis with Python\nGoal: Use Python libraries to fetch and analyze personal fitness data directly from my Garmin watch, generating custom visualizations. I\’ll use this to go to displaying data on my personal website.\n\n\nI\’m going to watch 3Blue1Brown’s Neural Networks video series to introduce myself to AI and ML and I\’ll see where to go from there.\n\nI\’ll also start looking into low-level C concepts (pointers, memory allocation, stack vs. heap) to prepare for CS 136 down the line.\n\nFinally, I\’ll spend some time learning Racket and functional programming fundamentals (recursion over loops, no variable mutation, functions as first-class values).'
+    entry: 'I\'ve been thinking about where I am and where I should focus the rest of the month until classes start.\n\nSo far, I\'ve worked through courses on HTML, CSS, JavaScript, React, and Next.js, and built a portfolio site. This includes a personal bio, project summary page, and logs for my one project so far (this one!). Unfinished work includes having a backend for my journal entries as well as analyzing and displaying gym data (but fetching and processing data is complete). Yesterday, I also created a custom macOS shortcut using Python to streamline my morning routine. However, while frontend has been a good place to start, I need to start building deeper skills that can\'t be so easily replaced by AI.\n\n1. Finish and Deploy the Personal Website\nFeatures that I can finish are mostly done (remaining: dropdown menu from navbar on hover), so just deploy this to Vercel and get it done. Deployed and done is better than infinitely polishing this.\n2. Build a Dedicated Quote Backend\nUse FastAPI (Python) and SQLite, deployed on Railway or Render, connected to Next.js which manages and displays quotes.\nScope: Fetch all quotes, get a random daily quote, and submit a new quote.\nWhy: This provides a complete full-stack mental model, connecting a Next.js site to actual database operations. I\'ll use this to go to creating a backend for my journal entries.\n3. Dive into Garmin Data Analysis with Python\nGoal: Use Python libraries to fetch and analyze personal fitness data directly from my Garmin watch, generating custom visualizations. I\'ll use this to go to displaying data on my personal website.\n\nI\'m going to watch 3Blue1Brown\'s Neural Networks video series to introduce myself to AI and ML and I\'ll see where to go from there.\n\nI\'ll also start looking into low-level C concepts (pointers, memory allocation, stack vs. heap) to prepare for CS 136 down the line.\n\nFinally, I\'ll spend some time learning Racket and functional programming fundamentals (recursion over loops, no variable mutation, functions as first-class values).'
   }
 ]
