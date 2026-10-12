@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
+import ProjectFacts from '@/components/ProjectFacts';
 import StatusBadge from '@/components/StatusBadge';
 import { getProject, projects } from '@/lib/projects';
 
@@ -38,6 +39,8 @@ export default async function ProjectPage({ params }: PageProps<'/projects/[slug
       badge={<StatusBadge status={project.status} />}
       title={project.title}
       summary={project.summary}
+      aside={(project.repo || project.stack.length > 0) &&
+        <ProjectFacts repo={project.repo} stack={project.stack} />}
     />
   );
 }

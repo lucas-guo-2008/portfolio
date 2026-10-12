@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={[display.variable, serif.variable, sans.variable, mono.variable, "h-full"].join(" ")}>
       <body className="bg-page text-text font-sans antialiased min-h-full flex flex-col">
         <Navbar />
-        <main className="flex-1 w-full mx-auto max-w-page px-5 md:px-12 py-3 md:py-8">{children}</main>
+        <main className="flex-1 w-full mx-auto max-w-page px-5 md:px-12 pt-5 md:pt-9">{children}</main>
         <Footer />
       </body>
     </html>

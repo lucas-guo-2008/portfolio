@@ -18,6 +18,12 @@ export function getProject(slug : string): Project | undefined {
   return project;
 }
 
+export function splitStackItem(item: string) {
+  const i = item.indexOf(':');
+  if (i === -1) return { key: null, value: item };
+  return { key: item.slice(0, i).trim(), value: item.slice(i + 1).trim() };
+}
+
 export const projects : Project[] = [
   {
     title: 'Portfolio',
