@@ -27,7 +27,7 @@ export default function PageHeader({title, summary, path, badge, aside}:PageHead
                     </p>}
                 </div>
                 {aside &&
-                <div className="mt-3.5 pt-3.5 border-t border-border-subtle md:mt-0 md:pt-0 md:border-t-0 md:border-l md:pl-7 md:w-80 md:shrink-0">
+                <div className="mt-3.5 pt-3.5 border-t border-border-subtle md:mt-0 md:pt-0 md:border-t-0 md:border-l md:pl-7 md:w-87 md:shrink-0">
                     {aside}
                 </div>}
             </div>

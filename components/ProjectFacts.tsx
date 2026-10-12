@@ -15,7 +15,7 @@ export default function ProjectFacts({repo, stack}:ProjectFactsProps) {
                 <div>
                     <dt className={label}>Repo</dt>
                     <dd className="mt-1">
-                        <SocialLink href={repo}>{repo.replace('https://github.com/', '')} ↗</SocialLink>
+                        <SocialLink href={repo}>{repo.replace('https://github.com/', '')}{'\u00a0↗'}</SocialLink>
                     </dd>
                 </div>
             )}
