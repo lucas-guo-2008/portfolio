@@ -28,11 +28,20 @@ export function splitStackItem(item: string) {
 export const projects : Project[] = [
   {
     title: 'Portfolio',
-    summary: 'Build a personal website to display my project work and the build logs behind each project. The secondary goal is to learn web development by shipping a functional site with minimal prior experience.',
+    summary: 'A personal website that displays my project work and the build logs behind each project. The secondary goal is to learn web development by shipping a functional site with minimal prior experience.',
     phases: [
       {
         comment: 'Static Site',
         description: 'Begin strictly with a static Projects page to establish the base site.'
+      }, {
+        comment: 'Design System',
+        description: 'Apply one shared set of colors, type and spacing from a design canvas, so this site and the dashboard match.'
+      }, {
+        comment: 'Project Pages',
+        description: 'Give every project its own pre-built page with its summary and a build log that opens and closes.'
+      }, {
+        comment: 'Deploy',
+        description: 'Ship to Vercel and link it with the Life Dashboard.'
       }, {
         comment: 'Defer Complex Features',
         description: 'Postpone live interactive forms until the initial read-only site is deployed and running smoothly.'
@@ -43,7 +52,7 @@ export const projects : Project[] = [
     featured: true,
     repo: 'https://github.com/lucas-guo-2008/portfolio',
     stack: [
-      'Framework: Next.js, React, Tailwind CSS',
+      'Framework: Next.js, React, TypeScript, Tailwind CSS',
       'Hosting: Vercel',
       'Content: Static TypeScript files for project summaries and build logs'
     ],
@@ -86,7 +95,7 @@ export const projects : Project[] = [
   },
   {
     title: 'Life Dashboard',
-    summary: 'Build a public dashboard to track daily metrics (Gym, Running, Sleep) and GitHub activity. The secondary goal is to learn to fetch, analyze, and visualize real data, starting with personal fitness data from my Garmin watch.',
+    summary: 'A public dashboard that tracks daily metrics (Gym, Running, Sleep) and GitHub activity. The secondary goal is to learn to fetch, analyze, and visualize real data, starting with gym logs and then personal fitness data from my Garmin watch.',
     phases: [
       {
         comment: 'Gym Data',
@@ -96,7 +105,7 @@ export const projects : Project[] = [
         description: 'Show commit activity and a contribution calendar from the GitHub API, with each repo linking to its write-up on my portfolio.'
       }, {
         comment: 'Garmin Data',
-        description: 'Add Running and Sleep dashboards later. Start with manual Garmin data exports, then explore automated options using unofficial APIs in future updates.'
+        description: 'Add Running and Sleep dashboards. Start with manual Garmin data exports, then explore automated options using unofficial APIs in future updates.'
       }, {
         comment: 'Defer Complex Features',
         description: 'Postpone database setup and user authentication until the initial read-only site is deployed and running smoothly.'
@@ -105,7 +114,7 @@ export const projects : Project[] = [
     stack: [
       'Framework: Next.js, React, Tailwind CSS',
       'Hosting: Vercel',
-      'Data Sources: Google Sheets for gym logs; CSV/JSON manual exports for Garmin data, imported with a Python script; the GitHub API for commit activity.'
+      'Data Sources: Google Sheets for gym logs; CSV/JSON manual exports for Garmin data, imported with a Python script; the GitHub API for commit activity'
     ],
     slug: 'life-dashboard',
     status: 'planned',
