@@ -13,7 +13,7 @@ const statusBadges: Record<Project['status'], {label: string; dot: string}> = {
 
 export default function StatusBadge({status} : StatusBadgeProps) {
     return (
-        <span className={`px-3 py-1 border rounded-full text-label font-mono uppercase tracking-label inline-flex items-center gap-1.5 ${statusBadges[status].label}`}>
+        <span className={`group-hover:bg-surface px-3 py-1 border rounded-full text-label font-mono uppercase tracking-label inline-flex items-center gap-1.5 ${statusBadges[status].label}`}>
             <span className={`size-2 rounded-full shrink-0 ${statusBadges[status].dot}`} aria-hidden="true"></span>
             {status}
         </span>
