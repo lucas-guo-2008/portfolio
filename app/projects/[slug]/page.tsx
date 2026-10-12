@@ -2,7 +2,20 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
 import StatusBadge from '@/components/StatusBadge';
-import { getProject } from '@/lib/projects';
+import { getProject, projects } from '@/lib/projects';
+
+export function generateStaticParams() {
+  return projects.map(project => ({ slug: project.slug }));
+}
+
+export const dynamicParams = false;
+
+export async function generateMetadata({ params }: PageProps<'/projects/[slug]'>) {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+  return { title: project.title, description: project.summary };
+}
 
 export default async function ProjectPage({ params }: PageProps<'/projects/[slug]'>) {
   const { slug } = await params;
