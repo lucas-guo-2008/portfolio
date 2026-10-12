@@ -119,13 +119,5 @@ export const projects : Project[] = [
     slug: 'life-dashboard',
     status: 'planned',
     featured: true,
-  },
-  {
-    title: 'Test title',
-    summary: 'Test summary',
-    phases: [],
-    stack: [],
-    slug: 'test',
-    status: 'planned',
   }
 ];
