@@ -47,17 +47,7 @@ export default async function ProjectPage({ params }: PageProps<'/projects/[slug
           <ProjectFacts repo={project.repo} stack={project.stack} />}
       />
 
-      {logs.length > 0 && (
-        <section className="flex flex-col gap-3">
-          <div className="flex items-baseline gap-3">
-            <h2 className="text-heading font-display font-bold">Build log</h2>
-            <p className="font-mono text-label uppercase tracking-label text-text-muted">
-              {logs.length} {logs.length === 1 ? 'entry' : 'entries'}
-            </p>
-          </div>
-          <LogList logs={logs} />
-        </section>
-      )}
+      {logs.length > 0 && <LogList logs={logs} />}
     </div>
   );
 }
