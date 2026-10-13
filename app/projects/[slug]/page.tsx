@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: PageProps<'/projects/[slug
         aside={(project.repo || project.stack.length > 0) &&
           <ProjectFacts repo={project.repo} stack={project.stack} />}
       />
-      <Roadmap phases={project.phases} />
+      <Roadmap phases={project.phases} current={project.current} />
       {project.status === 'planned' ? <ComingSoon content="Stay tuned for updates!" /> : <LogList logs={logs} />}
     </div>
   );

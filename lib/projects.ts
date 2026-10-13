@@ -4,9 +4,10 @@ export type Project = {
   phases: Phase[];
   stack: string[];
   slug: string;
-  status: 'live' | 'complete' | 'building' | 'planned';   // complete = finished, but not running anywhere
+  status: 'live' | 'complete' | 'building' | 'planned';
   repo?: string;
-  featured?: boolean;   // shows on the home page; status decides which group
+  featured?: boolean;
+  current?: number;
 }
 
 export type Phase = {
@@ -50,6 +51,7 @@ export const projects : Project[] = [
     slug: 'portfolio',
     status: 'building',
     featured: true,
+    current: 3,
     repo: 'https://github.com/lucas-guo-2008/portfolio',
     stack: [
       'Framework: Next.js, React, TypeScript, Tailwind CSS',
@@ -91,6 +93,7 @@ export const projects : Project[] = [
     slug: 'coc-bot',
     status: 'building',
     featured: true,
+    current: 4,
     repo: 'https://github.com/lucas-guo-2008/clash-of-clans-bot'
   },
   {
