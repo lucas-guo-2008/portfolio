@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import type { Log } from "@/lib/logs";
+import { dayNumber, type Log } from "@/lib/logs";
 import Button from "./Button";
 import EmptyState from "./EmptyState";
 import LogRow from "./LogRow";
@@ -25,12 +25,7 @@ export default function LogList({logs}:LogListProps) {
     return (
         <section className="flex flex-col gap-3">
             <div className="flex flex-col gap-3 md:min-h-9.5 md:flex-row md:items-center md:justify-between">
-                <div className="flex items-baseline gap-3">
-                    <h2 className="text-heading font-display font-bold">Build log</h2>
-                    <p className="font-mono text-label uppercase tracking-label text-text-muted">
-                        {logs.length} {logs.length === 1 ? 'entry' : 'entries'}
-                    </p>
-                </div>
+                <h2 className="text-heading md:text-title font-display font-bold">Build log</h2>
                 {logs.length > 0 &&
                 <div className="flex gap-2">
                     <Button onClick={() => setOpen(new Set(logs.map((_, i) => i)))}>Open all</Button>
@@ -38,9 +33,13 @@ export default function LogList({logs}:LogListProps) {
                 </div>}
             </div>
             {logs.length > 0
-                ? <div className="flex flex-col gap-2">
+                ? <div className="bg-surface border border-border rounded-lg overflow-hidden divide-y divide-border-subtle">
+                    <div className="hidden md:flex gap-4 px-5 py-2.5 bg-surface-muted font-mono text-label uppercase tracking-label text-text-muted">
+                        <span className="w-30 shrink-0">Day</span>
+                        <span className="flex-1">Entry</span>
+                    </div>
                     {logs.map((log, i) => (
-                        <LogRow key={log.title} log={log} open={open.has(i)} onToggle={() => toggle(i)} />
+                        <LogRow key={log.title} log={log} day={dayNumber(log.date, logs[0].date)} open={open.has(i)} onToggle={() => toggle(i)} />
                     ))}
                   </div>
                 : <EmptyState title="No logs yet" content="Nothing written for this project so far. Entries land here as the build moves along." />}
