@@ -43,6 +43,9 @@ export default function Home() {
             <ContactLinks />
           </div>
         </div>
+        <div aria-hidden="true" className="xl:hidden mt-10 h-32 md:h-48 max-w-2xl">
+          <CourseMap variant="band" className="block w-full h-full" />
+        </div>
       </section>
 
       <section className="relative flex flex-col gap-12 pb-6 pl-11 before:absolute before:left-2.5 before:top-2 before:bottom-0 before:border-l-2 before:border-dashed before:border-text-faint">
@@ -52,7 +55,7 @@ export default function Home() {
               <Sign icon aria-hidden className="absolute -left-11 top-0.5">{group.icon}</Sign>
               <h2 className="text-heading md:text-title font-display font-bold">{group.label}</h2>
             </div>
-            <div className="grid gap-3.5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-3.5 md:grid-cols-2 xl:grid-cols-3">
               {group.projects.map(project => <ProjectTile key={project.slug} project={project} titleAs="h3" />)}
             </div>
           </div>
