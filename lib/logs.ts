@@ -16,9 +16,6 @@ export type EntryBlock =
 
 const NUMBERED = /^\d+\. /;
 
-// Entry format: blocks separated by a blank line. 
-// A block starting with "1. " is a numbered list
-// Every other block is one paragraph.
 export function parseEntry(entry: string): EntryBlock[] {
   return entry.split('\n\n').map((block): EntryBlock => {
     if (!NUMBERED.test(block)) return { kind: 'paragraph', text: block };
@@ -31,7 +28,24 @@ export function parseEntry(entry: string): EntryBlock[] {
   });
 }
 
-// Oldest first: the home footer and anything else reading "the latest log" rely on this order.
+
+export function dayNumber(date: string, start: string): number {
+  const utc = (s: string) => {
+    const [y, m, d] = s.slice(0, 10).split('-').map(Number);
+    return Date.UTC(y, m - 1, d);
+  };
+  return Math.round((utc(date) - utc(start)) / 86_400_000) + 1;
+}
+
+const shortDate = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+export function formatLogDate(date: string): { iso: string; label: string; suffix?: string } {
+  const iso = date.slice(0, 10);
+  const [y, m, d] = iso.split('-').map(Number);
+  const suffix = date.slice(10).trim().replace(/^\((.*)\)$/, '$1') || undefined;
+  return { iso, label: shortDate.format(Date.UTC(y, m - 1, d)), suffix };
+}
+
 export const logs: Log[] = [
   {
     projectSlug: 'portfolio',
