@@ -19,12 +19,15 @@ export const photo: { src: string; alt: string } | undefined = undefined;
 // One line in Lucas's words; hidden until set.
 export const funFact: string | undefined = undefined;
 
-export type ProfileRow = { label: string; items: string[] };
-// "Working on" is derived from projects in the page, between Interests and Sports.
+export type ProfileRow =
+  | { label: string; items: string[] }
+  | { label: string; derived: 'building-projects' };   // filled in by the page
+
 export const profile: ProfileRow[] = [
   { label: 'University',     items: ['University of Waterloo'] },
   { label: 'Major and year', items: ['Computer Science, first year'] },
   { label: 'Interests',      items: ['AI/ML', 'CV', 'Economics', 'Philosophy'] },
+  { label: 'Working on',     derived: 'building-projects' },
   { label: 'Sports',         items: ['Running', 'Gym', 'Hiking', 'Snowboarding'] },
   { label: 'Also into',      items: ['Pokemon cards', 'Anime', 'YouTube', 'Hanging out with friends'] },
 ];

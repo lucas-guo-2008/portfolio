@@ -15,21 +15,14 @@ const sectionHeading = 'text-heading md:text-title font-display font-bold';
 const socialBox = 'flex items-center justify-between gap-2.5 px-4 py-3.5 bg-surface border border-border rounded-lg';
 const socialHover = `hover:bg-accent-soft hover:border-accent hover:text-accent-strong transition-colors ${focusRing}`;
 
-function Separated({ children }: { children: ReactNode[] }) {
-  return children.map((child, i) => (
-    <span key={i}>
-      {i > 0 && <span aria-hidden="true" className="px-1.5 text-text-faint">·</span>}
-      {child}
-    </span>
-  ));
-}
-
 export default function AboutPage() {
   const workingOn = projects.filter(p => p.status === 'building').map(p => (
     <Link key={p.slug} href={`/projects/${p.slug}`} className={`text-accent hover:text-accent-strong ${focusRing}`}>{p.title}</Link>
   ));
-  const rows: { label: string; items: ReactNode[] }[] = [...profile];
-  rows.splice(rows.findIndex(r => r.label === 'Interests') + 1, 0, { label: 'Working on', items: workingOn });
+  const rows: { label: string; items: ReactNode[] }[] = profile.map(row => ({
+    label: row.label,
+    items: 'derived' in row ? workingOn : row.items,
+  }));
 
   return (
     <div className="flex flex-col gap-14">
@@ -56,7 +49,16 @@ export default function AboutPage() {
           {rows.map(row => (
             <div key={row.label} className="flex flex-col gap-1 md:flex-row md:gap-4 px-5 py-3.5">
               <dt className="md:w-50 md:shrink-0 font-mono text-caption text-text-muted">{row.label}</dt>
-              <dd className="text-body text-text"><Separated>{row.items}</Separated></dd>
+              <dd>
+                <ul className="flex flex-wrap gap-x-1.5 gap-y-0.5 text-body text-text">
+                  {row.items.map((item, i) => (
+                    <li key={i}>
+                      {i > 0 && <span aria-hidden="true" className="pr-1.5 text-text-faint">·</span>}
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
             </div>
           ))}
         </dl>
