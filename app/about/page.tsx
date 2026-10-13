@@ -4,7 +4,7 @@ import Bib from '@/components/Bib';
 import type { ReactNode } from 'react';
 import { bib, bio, funFact, location, photo, profile, tagline } from '@/lib/about';
 import { projects } from '@/lib/projects';
-import { dashboardUrl, socials } from '@/lib/socials';
+import { dashboardUrl, resumeUrl, socials, type Social } from '@/lib/socials';
 
 export const metadata = {
   title: "About me"
@@ -19,6 +19,7 @@ export default function AboutPage() {
   const workingOn = projects.filter(p => p.status === 'building').map(p => (
     <Link key={p.slug} href={`/projects/${p.slug}`} className={`text-accent hover:text-accent-strong ${focusRing}`}>{p.title}</Link>
   ));
+  const findMe: Social[] = resumeUrl ? [{ href: resumeUrl, label: 'Résumé', handle: 'PDF' }, ...socials] : socials;
   const rows: { label: string; items: ReactNode[] }[] = profile.map(row => ({
     label: row.label,
     items: 'derived' in row ? workingOn : row.items,
@@ -79,19 +80,18 @@ export default function AboutPage() {
       <section className="flex flex-col gap-4">
         <h2 className={sectionHeading}>Find me</h2>
         <ul className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-          {socials.map(social => (
-            <li key={social.label}>
-              {social.href
-                ? <a href={social.href} target="_blank" rel="noopener noreferrer" className={`${socialBox} ${socialHover}`}>
-                    <span className="font-display font-bold">{social.label}</span>
-                    <span className="font-mono text-caption text-text-muted">{social.handle ? `${social.handle} ↗` : '↗'}</span>
-                  </a>
-                : <div className={socialBox}>
-                    <span className="font-display font-bold">Email</span>
-                    <span className="font-mono text-caption text-text-muted">{social.label}</span>
-                  </div>}
-            </li>
-          ))}
+          {findMe.map(({ href, label, handle }) => {
+            const newTab = !href.startsWith('mailto:');
+            return (
+              <li key={label}>
+                <a href={href} target={newTab ? '_blank' : undefined} rel={newTab ? 'noopener noreferrer' : undefined}
+                   className={`${socialBox} ${socialHover}`}>
+                  <span className="font-display font-bold">{label}</span>
+                  <span className="font-mono text-caption text-text-muted">{[handle, newTab && '↗'].filter(Boolean).join(' ')}</span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </section>
     </div>

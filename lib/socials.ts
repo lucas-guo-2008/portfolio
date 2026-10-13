@@ -1,5 +1,5 @@
 export type Social = {
-    href?: string;
+    href: string;
     label: string;
     handle?: string;
     hero?: boolean;

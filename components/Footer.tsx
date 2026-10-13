@@ -10,9 +10,7 @@ export default function Footer() {
                     <ul className="grid grid-cols-2 gap-x-4 md:flex md:flex-wrap md:gap-6">
                         {socials.map(link => (
                             <li key={link.label} className="py-3 md:py-0 last:col-span-2">
-                                {link.href
-                                    ? <SocialLink href={link.href} variant='muted'>{link.label}</SocialLink>
-                                    : <span className="text-caption font-mono text-text-secondary border-b border-transparent">{link.label}</span>}
+                                <SocialLink href={link.href} variant='muted'>{link.label}</SocialLink>
                             </li>
                         ))}
                     </ul>
