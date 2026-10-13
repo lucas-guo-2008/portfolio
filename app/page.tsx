@@ -3,7 +3,7 @@ import CourseMap from '@/components/CourseMap';
 import ProjectTile from '@/components/ProjectTile';
 import Sign from '@/components/Sign';
 import { projects, type Project } from '@/lib/projects';
-import { bio, location, tagline } from '@/lib/about';
+import { bio, location, name, tagline } from '@/lib/about';
 
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2';
 const textLink = `self-start pt-2.5 pb-0.5 md:pt-0 md:pb-0 md:mt-1 font-mono text-caption text-accent border-b border-accent-border hover:text-accent-strong hover:border-accent-strong ${focusRing}`;
@@ -33,7 +33,7 @@ export default function Home() {
         {/* xl+ only, in the right half: the intro narrows to max-w-xl there so the two never overlap */}
         <CourseMap className="hidden xl:block absolute right-0 top-0 h-full w-1/2 pointer-events-none" />
         <div className="relative flex flex-col gap-4.5 max-w-reading xl:max-w-xl">
-          <p className="font-mono text-caption tracking-wide text-text-muted">{location}</p>
+          <p className="font-mono text-caption tracking-wide text-text-muted"><span className="font-medium text-text">{name}</span> · {location}</p>
           <h1 className="text-display md:text-hero font-display font-bold">{tagline}</h1>
           <p className="text-body text-text-secondary">{bio[0]}</p>
           <Link href="/about" className={textLink}>More about me →</Link>

@@ -1,3 +1,5 @@
+export const name = 'Lucas Guo';
+
 export const tagline = "CS major and Strava monkey";
 
 export const bio = [

@@ -11,10 +11,10 @@ const mono    = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], var
 
 export const metadata = {
   title: {
-    default: 'Lucas\' portfolio',
-    template: '%s | Lucas\' portfolio',
+    default: 'Lucas Guo',
+    template: '%s · Lucas Guo',
   },
-  description: 'All about me and my projects :D'
+  description: 'First-year CS at Waterloo. Projects and build logs.'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
