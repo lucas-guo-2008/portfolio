@@ -14,7 +14,8 @@ export const metadata = {
     default: 'Lucas Guo',
     template: '%s · Lucas Guo',
   },
-  description: 'First-year CS at Waterloo. Projects and build logs.'
+  description: 'First-year CS at Waterloo. Projects and build logs.',
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
