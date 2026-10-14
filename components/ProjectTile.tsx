@@ -5,7 +5,7 @@ import StatusBadge from "./StatusBadge";
 
 type ProjectTileProps = {
     project: Project;
-    titleAs?: 'h2' | 'h3';   // h3 under the home groups, h2 on /projects
+    titleAs?: 'h2' | 'h3';
     clamp?: boolean;
 }
 

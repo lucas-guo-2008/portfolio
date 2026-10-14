@@ -1,4 +1,3 @@
-// Route L: the same drawing as app/icon.svg, colored from tokens instead of hex values.
 type RouteMarkProps = {
   size?: number;
   tile?: 'page' | 'surface';

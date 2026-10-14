@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 const display = Space_Grotesk({ subsets: ["latin"], weight: ["500", "700"], variable: "--font-space-grotesk" });
 const serif   = Source_Serif_4({ subsets: ["latin"], weight: ["600"], variable: "--font-source-serif" });
 const sans    = Public_Sans({ subsets: ["latin"], variable: "--font-public-sans" });
-// No Arial-based fallback: → and ↗ aren't in any JetBrains Mono subset, and Arial draws them long.
 const mono    = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-jetbrains-mono", adjustFontFallback: false });
 
 export const metadata = {

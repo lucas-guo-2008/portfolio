@@ -7,7 +7,6 @@ type CardProps = {
     dashed?: boolean;
 }
 
-// The card is the link: its title link stretches over it (after:inset-0), so hover and focus live here.
 const interactiveStyles = [
     'group relative transition',
     'hover:bg-accent-soft hover:border-accent',
