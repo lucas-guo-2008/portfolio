@@ -15,15 +15,13 @@ export const bib = {
   category: 'Computer Science · First year',
 };
 
-// Add a real photo at public/<file> and fill this in; the bib shows alone until then.
-export const photo: { src: string; alt: string } | undefined = undefined;
+export const photo: { src: string; alt: string } = { src: '/lucas.jpg', alt: 'Lucas hiking at Whistler!'};
 
-// One line in Lucas's words; hidden until set.
-export const funFact: string | undefined = undefined;
+export const funFact: string = "I got my black belt in Taekwondo at 9 years old! Sadly, I\'ve been retired for ages.";
 
 export type ProfileRow =
   | { label: string; items: string[] }
-  | { label: string; derived: 'building-projects' };   // filled in by the page
+  | { label: string; derived: 'building-projects' };
 
 export const profile: ProfileRow[] = [
   { label: 'University',     items: ['University of Waterloo'] },
