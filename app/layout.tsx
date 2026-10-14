@@ -2,6 +2,7 @@ import { Space_Grotesk, Source_Serif_4, Public_Sans, JetBrains_Mono } from "next
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Analytics } from '@vercel/analytics/next';
 
 const display = Space_Grotesk({ subsets: ["latin"], weight: ["500", "700"], variable: "--font-space-grotesk" });
 const serif   = Source_Serif_4({ subsets: ["latin"], weight: ["600"], variable: "--font-source-serif" });
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="flex-1 w-full mx-auto max-w-page px-5 md:px-12 pt-5 md:pt-9">{children}</main>
         <Footer />
+        <Analytics/>
       </body>
     </html>
   );
