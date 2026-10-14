@@ -49,7 +49,7 @@ export const projects : Project[] = [
       }
     ],
     slug: 'portfolio',
-    status: 'building',
+    status: 'live',
     featured: true,
     current: 3,
     repo: 'https://github.com/lucas-guo-2008/portfolio',
