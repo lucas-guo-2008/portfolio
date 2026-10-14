@@ -28,10 +28,10 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col gap-14">
       <section className="flex flex-col md:flex-row md:items-center gap-10 md:gap-16">
-        <div className={photo ? 'relative md:w-115 md:shrink-0 md:pb-30' : 'md:shrink-0'}>
-          {photo && <Image src={photo.src} alt={photo.alt} width={720} height={900}
+        <div className={photo ? 'relative w-full max-w-90 mx-auto md:max-w-none md:mx-0 md:w-115 md:shrink-0 md:pb-30' : 'md:shrink-0'}>
+          {photo && <Image src={photo.src} alt={photo.alt} width={360} height={450} loading="eager"
                            className="w-full max-w-90 aspect-4/5 object-cover rounded-lg border border-border" />}
-          <Bib {...bib} className={photo ? 'mt-6 mx-auto -rotate-2 md:mt-0 md:mx-0 md:absolute md:right-0 md:bottom-0 md:-rotate-3' : '-rotate-2'} />
+          <Bib {...bib} className={photo ? '-mt-20 mx-auto -rotate-2 md:mt-0 md:mx-0 md:absolute md:right-0 md:bottom-0 md:-rotate-3' : '-rotate-2'} />
         </div>
         <div className="flex-1 min-w-0 max-w-reading flex flex-col gap-4.5">
           <p className="font-mono text-caption tracking-wide text-text-muted">{location}</p>
