@@ -4,8 +4,8 @@ const link = "text-accent border-b border-accent-border hover:text-accent-strong
 
 export default function ContactLinks() {
     const links = socials
-        .filter(social => social.hero && social.href)
-        .map(social => ({ href: social.href!, label: social.label, external: social.href!.startsWith('http') }));
+        .filter(social => social.hero)
+        .map(social => ({ href: social.href, label: social.label, external: social.href.startsWith('http') }));
     if (resumeUrl) links.push({ href: resumeUrl, label: 'Résumé', external: true });
 
     return (
