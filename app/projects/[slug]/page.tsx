@@ -27,6 +27,7 @@ export default async function ProjectPage({ params }: PageProps<'/projects/[slug
   const project = getProject(slug);
   if (!project) notFound();
   const logs = getLogs(project.slug);
+  const current = project.status === 'complete' ? project.phases.length : project.current;
 
   return (
     <div className="flex flex-col gap-14">
@@ -45,10 +46,16 @@ export default async function ProjectPage({ params }: PageProps<'/projects/[slug
         badge={<StatusBadge status={project.status} />}
         title={project.title}
         summary={project.summary}
-        aside={(project.repo || project.stack.length > 0) &&
-          <ProjectFacts repo={project.repo} stack={project.stack} />}
+        aside={(project.repo || project.role || project.event || project.links?.length || project.stack.length > 0) &&
+          <ProjectFacts
+            repo={project.repo}
+            stack={project.stack}
+            role={project.role}
+            event={project.event}
+            links={project.links}
+          />}
       />
-      <Roadmap phases={project.phases} current={project.current} />
+      <Roadmap phases={project.phases} current={current} />
       {project.status === 'planned' ? <ComingSoon content="Stay tuned for updates!" /> : <LogList logs={logs} />}
     </div>
   );

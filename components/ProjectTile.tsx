@@ -10,7 +10,7 @@ type ProjectTileProps = {
 }
 
 export default function ProjectTile({project, titleAs: Title = 'h3', clamp = true}:ProjectTileProps) {
-    const { slug, title, status, summary } = project;
+    const { slug, title, status, summary, event } = project;
     return (
         <Card roomy interactive dashed={status === 'planned'}>
             <div className="h-full flex flex-col gap-3 md:gap-3.5">
@@ -25,6 +25,12 @@ export default function ProjectTile({project, titleAs: Title = 'h3', clamp = tru
                     </Title>
                     <StatusBadge status={status} />
                 </div>
+
+                {event && (
+                    <p className="-mt-1.5 font-mono text-caption text-text-muted">
+                        {[event.name, event.date, event.award].filter(Boolean).join(' · ')}
+                    </p>
+                )}
 
                 <p className={`text-body-sm text-text-secondary ${clamp ? 'line-clamp-3 md:line-clamp-4' : ''}`}>{summary}</p>
             </div>
