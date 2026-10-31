@@ -8,11 +8,26 @@ export type Project = {
   repo?: string;
   featured?: boolean;
   current?: number;
+  event?: ProjectEvent;
+  links?: ProjectLink[];
+  role?: string;
 }
 
 export type Phase = {
   comment: string;
   description: string;
+}
+
+// Hackathons: shown as a caption on the tile ("Cal Hacks 13.0 · Oct 2026") and in the facts panel.
+export type ProjectEvent = {
+  name: string;
+  date: string;
+  award?: string;
+}
+
+export type ProjectLink = {
+  label: string;
+  href: string;
 }
 
 export function getProject(slug : string): Project | undefined {
