@@ -46,15 +46,20 @@ export default async function ProjectPage({ params }: PageProps<'/projects/[slug
         badge={<StatusBadge status={project.status} />}
         title={project.title}
         summary={project.summary}
-        aside={(project.repo || project.role || project.event || project.links?.length || project.stack.length > 0) &&
+        aside={(project.repo || project.event || project.links?.length || project.stack.length > 0) &&
           <ProjectFacts
             repo={project.repo}
             stack={project.stack}
-            role={project.role}
             event={project.event}
             links={project.links}
           />}
-      />
+      >
+        {project.role &&
+          <div className="max-w-reading">
+            <h2 className="font-mono text-label uppercase tracking-label text-text-muted">My part</h2>
+            <p className="mt-1 text-body-sm text-text-secondary">{project.role}</p>
+          </div>}
+      </PageHeader>
       <Roadmap phases={project.phases} current={current} />
       {project.status === 'planned' ? <ComingSoon content="Stay tuned for updates!" /> : <LogList logs={logs} />}
     </div>

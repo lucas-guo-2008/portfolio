@@ -1,19 +1,13 @@
 import { splitStackItem, type Project } from "@/lib/projects";
 import SocialLink from "./SocialLink";
 
-type ProjectFactsProps = Pick<Project, 'repo' | 'stack' | 'role' | 'event' | 'links'>;
+type ProjectFactsProps = Pick<Project, 'repo' | 'stack' | 'event' | 'links'>;
 
 const label = "font-mono text-label uppercase tracking-label text-text-muted";
 
-export default function ProjectFacts({repo, stack, role, event, links}:ProjectFactsProps) {
+export default function ProjectFacts({repo, stack, event, links}:ProjectFactsProps) {
     return (
         <dl className="flex flex-col gap-3 md:gap-3.5">
-            {role && (
-                <div>
-                    <dt className={label}>My part</dt>
-                    <dd className="mt-1 text-body-sm text-text-secondary">{role}</dd>
-                </div>
-            )}
             {event && (
                 <div>
                     <dt className={label}>Event</dt>

@@ -6,9 +6,10 @@ type PageHeaderProps = {
     path?: ReactNode;
     badge?: ReactNode;
     aside?: ReactNode;
+    children?: ReactNode;
 }
 
-export default function PageHeader({title, summary, path, badge, aside}:PageHeaderProps) {
+export default function PageHeader({title, summary, path, badge, aside, children}:PageHeaderProps) {
     return (
         <header className="flex flex-col md:flex-row gap-8 md:gap-14 md:items-start">
             <div className="flex-1 min-w-0 flex flex-col gap-4">
@@ -19,6 +20,7 @@ export default function PageHeader({title, summary, path, badge, aside}:PageHead
                 </div>}
                 <h1 className="text-display md:text-hero font-display font-bold">{title}</h1>
                 {summary && <p className="max-w-reading text-body text-text-secondary">{summary}</p>}
+                {children}
             </div>
             {aside &&
             <div className="md:w-87 md:shrink-0 bg-surface border border-border rounded-lg p-5">
