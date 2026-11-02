@@ -110,16 +110,16 @@ export const projects : Project[] = [
         description: 'Give every project its own pre-built page with its summary and a build log that opens and closes.'
       }, {
         comment: 'Deploy',
-        description: 'Ship to Vercel and link it with the Life Dashboard.'
+        description: 'Ship to Vercel.'
       }, {
-        comment: 'Defer Complex Features',
-        description: 'Postpone live interactive forms until the initial read-only site is deployed and running smoothly.'
+        comment: 'Maintenance',
+        description: "I'm done working on the portfolio for now, but may add features in the future."
       }
     ],
     slug: 'portfolio',
     status: 'live',
     featured: true,
-    current: 3,
+    current: 4,
     repo: 'https://github.com/lucas-guo-2008/portfolio',
     stack: [
       'Framework: Next.js, React, TypeScript, Tailwind CSS',
@@ -145,7 +145,7 @@ export const projects : Project[] = [
         description: 'Attack bases whose loot clears a threshold: drop troops along the deployable perimeter, wait out the battle, and return home.'
       }, {
         comment: 'Building Detection',
-        description: 'Train a YOLO nano model to detect defenses, collectors, storages, and walls, bootstrapping labels from ~100 hand-labelled frames.'
+        description: 'Train a YOLO model to find the 8 loot-building classes, bootstrapping labels from 100 reviewed frames: 0.987 recall on frames it had never seen.'
       }, {
         comment: 'Decision Layer',
         description: 'Score each base by expected value from detections and loot to choose which bases to attack and which side to deploy from.'
@@ -156,12 +156,12 @@ export const projects : Project[] = [
       'Emulator: BlueStacks Air (macOS)',
       'Capture & Input: ADB via adbutils (raw screencap over a persistent connection)',
       'Vision: OpenCV template matching, NumPy',
-      'Planned: YOLO (nano) for building detection'
+      'Detection: YOLO26 via Ultralytics, about 18 ms per base'
     ],
     slug: 'coc-bot',
     status: 'building',
     featured: true,
-    current: 4,
+    current: 5,
     repo: 'https://github.com/lucas-guo-2008/clash-of-clans-bot'
   },
   {
@@ -213,6 +213,6 @@ export const projects : Project[] = [
     ],
     slug: 'life-dashboard',
     status: 'planned',
-    featured: true,
+    featured: false,
   }
 ];
