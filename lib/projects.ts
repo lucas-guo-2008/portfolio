@@ -43,6 +43,32 @@ export function splitStackItem(item: string) {
 
 export const projects : Project[] = [
   {
+    title: 'KW Connect',
+    summary: 'A Flutter app, built with KW Habilitation, that makes the real Facebook easier and safer for seniors and adults with intellectual or developmental disabilities. It loads facebook.com in a web view and simplifies it, adds read-aloud and speech-to-type, scales text and buttons up to 200%, and alerts a support person when a chat looks unsafe.',
+    phases: [
+      { comment: 'Facebook Wrapper', description: 'A Flutter web view loads the real facebook.com, and each area of the page gets its own CSS/JS file so three of us could work in parallel.' },
+      { comment: 'Simplify',         description: 'Hide ads, Reels in the feed, the sidebars, Marketplace and Gaming, and trim the post composer, profiles, Messenger and comments.' },
+      { comment: 'Read and Speak',   description: 'ElevenLabs reads posts and messages aloud and turns speech into text, and Cloudinary AI Vision describes photos before they are read.' },
+      { comment: 'Safety',           description: 'Gemini checks Messenger chats and alerts support contacts by text or email, and an on-device check warns before sending a card number, SIN, password or PIN.' },
+      { comment: 'Sizing and Mobile', description: 'Text, bold and button size (up to 200%) are set during onboarding, and phones get a bottom tab bar with full-screen chats.' },
+    ],
+    stack: [
+      'Language: Dart, JavaScript, CSS',
+      'App: Flutter (Mac, Android, iOS)',
+      'AI: Gemini, ElevenLabs, Cloudinary AI Vision',
+      'Messaging: Twilio, Resend',
+    ],
+    slug: 'kw-connect',
+    status: 'complete',
+    repo: 'https://github.com/collinykm/KW-Hab',
+    featured: true,
+    event: { name: 'CommuniHacks', date: 'Nov 2026' },
+    links: [
+      { label: 'Devpost', href: 'https://devpost.com/software/1533103' },
+    ],
+    role: 'I built many of the Facebook simplifications (the post composer, hiding ads and feed Reels, profiles, the share menu, the Saved tab and friend requests), the text and email alerts to support contacts (Twilio and Resend), and turned off speech-to-type on PIN fields.',
+  },
+  {
     title: 'Magnus Bot',
     summary: "A two-arm robot that plays chess against a human on a real board: it moves pieces with analytic inverse kinematics and passes them across a shared square when one arm can't reach. An RF-DETR model on a phone camera checks each robot move and reads the human's reply.",
     phases: [
