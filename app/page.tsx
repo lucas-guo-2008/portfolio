@@ -1,14 +1,13 @@
 import Link from 'next/link';
 import ContactLinks from '@/components/ContactLinks';
 import CourseMap from '@/components/CourseMap';
-import ProjectGroups from '@/components/ProjectGroups';
+import ProjectTile from '@/components/ProjectTile';
+import Sign from '@/components/Sign';
 import { projects } from '@/lib/projects';
 import { intro, name } from '@/lib/about';
 
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2';
 const linkLook = `font-mono text-caption text-accent border-b border-accent-border hover:text-accent-strong hover:border-accent-strong ${focusRing}`;
-const textLink = `self-start pt-2.5 pb-0.5 md:pt-0 md:pb-0 md:mt-1 ${linkLook}`;
-
 export default function Home() {
   const featured = projects.filter(project => project.featured);
   const hasMore = projects.some(project => !project.featured);
@@ -31,9 +30,20 @@ export default function Home() {
         </div>
       </section>
 
-      <ProjectGroups projects={featured} rows>
-        {hasMore && <Link href="/projects" className={textLink}>All {projects.length} projects →</Link>}
-      </ProjectGroups>
+      <section className="relative flex flex-col gap-4 pb-6 pl-11 before:absolute before:left-2.5 before:top-2 before:bottom-0 before:border-l-2 before:border-dashed before:border-text-faint">
+        <div className="relative flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <Sign icon aria-hidden className="absolute -left-11 top-0.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />
+            </svg>
+          </Sign>
+          <h2 className="text-heading md:text-title font-display font-bold">Featured projects</h2>
+          {hasMore && <Link href="/projects" className={linkLook}>All {projects.length} projects →</Link>}
+        </div>
+        <div className="flex flex-col gap-3.5">
+          {featured.map(project => <ProjectTile key={project.slug} project={project} titleAs="h3" wide />)}
+        </div>
+      </section>
     </div>
   );
 }

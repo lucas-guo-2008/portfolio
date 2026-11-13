@@ -6,7 +6,6 @@ import type { Project } from '@/lib/projects';
 type ProjectGroupsProps = {
   projects: Project[];
   clamp?: boolean;
-  rows?: boolean;
   children?: ReactNode;
 };
 
@@ -23,7 +22,7 @@ const arrowIcon = (
   </svg>
 );
 
-export default function ProjectGroups({ projects, clamp = true, rows = false, children }: ProjectGroupsProps) {
+export default function ProjectGroups({ projects, clamp = true, children }: ProjectGroupsProps) {
   const groups = [
     { label: 'Built', icon: flagIcon, projects: projects.filter(project => built.includes(project.status)) },
     { label: 'Now and next', icon: arrowIcon, projects: projects.filter(project => !built.includes(project.status)) },
@@ -37,8 +36,8 @@ export default function ProjectGroups({ projects, clamp = true, rows = false, ch
             <Sign icon aria-hidden className="absolute -left-11 top-0.5">{group.icon}</Sign>
             <h2 className="text-heading md:text-title font-display font-bold">{group.label}</h2>
           </div>
-          <div className={rows ? 'flex flex-col gap-3.5' : 'grid gap-3.5 md:grid-cols-2 xl:grid-cols-3'}>
-            {group.projects.map(project => <ProjectTile key={project.slug} project={project} titleAs="h3" clamp={clamp} wide={rows} />)}
+          <div className="grid gap-3.5 md:grid-cols-2 xl:grid-cols-3">
+            {group.projects.map(project => <ProjectTile key={project.slug} project={project} titleAs="h3" clamp={clamp} />)}
           </div>
         </div>
       ))}
