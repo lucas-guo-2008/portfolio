@@ -114,7 +114,6 @@ export const projects : Project[] = [
     slug: 'allos',
     status: 'complete',
     repo: 'https://github.com/shawn-xionggg/Hack-the-Valley',
-    featured: true,
     event: { name: 'Hack the Valley 11', date: 'Oct 2026' },
     links: [
       { label: 'Devpost', href: 'https://devpost.com/software/update-later-ixuqpb' },
@@ -144,7 +143,6 @@ export const projects : Project[] = [
     ],
     slug: 'portfolio',
     status: 'live',
-    featured: true,
     current: 4,
     repo: 'https://github.com/lucas-guo-2008/portfolio',
     stack: [
@@ -210,7 +208,6 @@ export const projects : Project[] = [
     ],
     slug: 'spotify-playlist-analysis',
     status: 'building',
-    featured: true,
     current: 2,
     repo: 'https://github.com/lucas-guo-2008/spotify',
   },

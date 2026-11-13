@@ -32,7 +32,7 @@ export default function Home() {
       </section>
 
       <ProjectGroups projects={featured}>
-        {hasMore && <Link href="/projects" className={textLink}>All projects →</Link>}
+        {hasMore && <Link href="/projects" className={textLink}>All {projects.length} projects →</Link>}
       </ProjectGroups>
     </div>
   );
