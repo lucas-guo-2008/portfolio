@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ProjectGroups projects={featured}>
+      <ProjectGroups projects={featured} rows>
         {hasMore && <Link href="/projects" className={textLink}>All {projects.length} projects →</Link>}
       </ProjectGroups>
     </div>
