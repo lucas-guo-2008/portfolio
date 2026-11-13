@@ -36,7 +36,7 @@ export default function AboutPage() {
         <div className="flex-1 min-w-0 max-w-reading flex flex-col gap-4.5">
           <p className="font-mono text-caption tracking-wide text-text-muted">{location}</p>
           <p className="text-title md:text-display font-display font-bold">{tagline}</p>
-          <p className="text-body text-text-secondary">{bio[1]}</p>
+          {bio.map(paragraph => <p key={paragraph} className="text-body text-text-secondary">{paragraph}</p>)}
           {funFact &&
           <p className="px-4 py-3 bg-surface border border-dashed border-text-faint rounded-lg text-body-sm text-text-secondary">
             <b className="font-display">Fun fact:</b> {funFact}

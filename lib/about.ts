@@ -2,12 +2,14 @@ export const name = 'Lucas Guo';
 
 export const tagline = "CS major and Strava monkey";
 
+export const intro = "First-year CS at Waterloo. I build ML projects, from computer vision to robot arms, and I'm learning neural networks from the ground up.";
+
 export const bio = [
   "I'm a first-year CS major at the University of Waterloo! I'm interested in ML, CV, Economics, and Philosophy. I'm currently working on a Clash of Clans bot using Python, OpenCV, and YOLO, as well as learning about neural networks.",
   "In my free time, I like going to the gym, running, hiking, snowboarding, and hanging out with friends. I also like collecting Pokemon cards, as well as watching anime, movies, and YouTube.",
 ];
 
-export const location = '43.47° N, 80.54° W · Waterloo, ON';
+export const location = 'Waterloo, ON';
 
 export const bib = {
   number: '3522419',
