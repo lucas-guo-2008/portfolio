@@ -1,9 +1,11 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
-import { name, tagline } from '@/lib/about';
+import { name } from '@/lib/about';
 
-export const alt = 'Lucas Guo: CS major and Strava monkey';
+const subtitle = 'Learning ML, and a bit of everything';
+
+export const alt = 'Lucas Guo: Learning ML, and a bit of everything';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -57,7 +59,7 @@ export default function Image() {
               <circle cx="24" cy="23" r="3.4" fill={C.marker} />
             </svg>
             <div style={{ marginTop: 36, fontSize: 96, fontWeight: 700, lineHeight: 1, letterSpacing: '-0.035em', color: C.text }}>{name}</div>
-            <div style={{ marginTop: 16, fontSize: 44, fontWeight: 400, lineHeight: 1.1, color: C.textSecondary }}>{tagline}</div>
+            <div style={{ marginTop: 16, fontSize: 44, fontWeight: 400, lineHeight: 1.1, textWrap: 'balance', color: C.textSecondary }}>{subtitle}</div>
             <div style={{ marginTop: 20, fontSize: 28, fontWeight: 400, color: C.textMuted }}>CS · University of Waterloo</div>
           </div>
         </div>

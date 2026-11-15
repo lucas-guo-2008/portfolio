@@ -9,7 +9,9 @@ export const bio = [
   "In my free time, I like going to the gym, running, hiking, snowboarding, and hanging out with friends. I also like collecting Pokemon cards, as well as watching anime, movies, and YouTube.",
 ];
 
-export const location = 'Waterloo, ON';
+export const lookingFor: string | undefined = "I'm also looking for a Summer 2027 co-op in ML or software!";
+
+export const location ='Waterloo, ON';
 
 export const bib = {
   number: '3522419',

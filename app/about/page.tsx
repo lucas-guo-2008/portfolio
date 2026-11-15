@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Bib from '@/components/Bib';
 import type { ReactNode } from 'react';
-import { bib, bio, funFact, location, photo, profile, tagline } from '@/lib/about';
+import { bib, bio, funFact, location, lookingFor, photo, profile, tagline } from '@/lib/about';
 import { projects } from '@/lib/projects';
 import { dashboardUrl, resumeUrl, socials, type Social } from '@/lib/socials';
 
@@ -37,6 +37,7 @@ export default function AboutPage() {
           <p className="font-mono text-caption tracking-wide text-text-muted">{location}</p>
           <p className="text-title md:text-display font-display font-bold">{tagline}</p>
           {bio.map(paragraph => <p key={paragraph} className="text-body text-text-secondary">{paragraph}</p>)}
+          {lookingFor && <p className="text-body font-medium text-text">{lookingFor}</p>}
           {funFact &&
           <p className="px-4 py-3 bg-surface border border-dashed border-text-faint rounded-lg text-body-sm text-text-secondary">
             <b className="font-display">Fun fact:</b> {funFact}
@@ -45,7 +46,7 @@ export default function AboutPage() {
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className={sectionHeading}>Athlete profile</h2>
+        <h2 className={sectionHeading}>At a glance</h2>
         <dl className="bg-surface border border-border rounded-lg divide-y divide-border-subtle">
           {rows.map(row => (
             <div key={row.label} className="flex flex-col gap-1 md:flex-row md:gap-4 px-5 py-3.5">
