@@ -171,8 +171,11 @@ export const projects : Project[] = [
         comment: 'Building Detection',
         description: 'Train a YOLO model to find the 8 loot-building classes, bootstrapping labels from 100 reviewed frames: 0.987 recall on frames it had never seen.'
       }, {
-        comment: 'Decision Layer',
-        description: 'Score each base by expected value from detections and loot to choose which bases to attack and which side to deploy from.'
+        comment: 'Loot per Hour',
+        description: 'Measure loot per hour and test each rule change in randomized live runs. An audit capped a trained base-scoring model at 3–8%, so it wasn\'t worth it.'
+      }, {
+        comment: 'Polish',
+        description: 'Test the new loot threshold live, handle the event screens that break the first runs, and clean up the code.'
       }
     ],
     stack: [
